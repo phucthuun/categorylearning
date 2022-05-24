@@ -73,7 +73,23 @@ ui = navbarPage(id = 'wholePage',
                          # WHAT
                          fluidRow(
                            column(3),
-                           column(6, align="center", includeHTML(("intro_text.html"))),
+                           column(6, align="center", 
+                                  includeHTML(("intro_text.html")),
+                                  hr(),
+                                  
+                                  img(src='426_2021_1591_Fig2_HTML.png', style='height: 488px; width: 726px'),
+                                  p("Image taken from Henningsen-Schomers"),
+                                  hr(),
+                                  h2(strong(style="text-align: center;", 'Design')),
+                                  p(style="text-align: left;","A. TRAINING. The neural network model will be trained on 10 categories, each containing 3 training instances. The training instances of the same category will be labelled either by the same category label or by their distinct proper names."),
+                                  p(style="text-align: left;","B. TEST. For each of the 10 categories we will present to the neural network 3 training instances together with 3 novel instances."),
+                                  img(src='Design.jpg', style='height: 313px; width: 1089px'),
+                                  
+                                  
+                                  
+                                  
+                                  includeHTML(("end_text.html"))
+                                  ),
                            column(3)
                          )),
                 
@@ -93,7 +109,8 @@ ui = navbarPage(id = 'wholePage',
                                         column(3),
                                         column(6,
                                           box(title = NULL, solidHeader = TRUE, status = 'warning', width = NULL,
-                                            # selectizeInput("model_id", "Select model", choices = unique(df$Model), multiple = F),
+                                              includeHTML(("explore_text.html")),
+                                              # selectizeInput("model_id", "Select model", choices = unique(df$Model), multiple = F),
                                             sliderTextInput("model_id","Select model" , 
                                                             choices = unique(df$Model), 
                                                                         # selected = c("January", "February", "March", "April"), #if you want any default values 
@@ -120,11 +137,11 @@ ui = navbarPage(id = 'wholePage',
                                       fluidRow(
                                         box(title = NULL, solidHeader = T, status = 'warning', width = NULL,
                                             column(6,
-                                                   strong("CATEGORY LABEL", style = "color: #006c66"),
-                                                   plotOutput("illustration_CL")%>% withSpinner(type=4,color="#006c66")),
+                                                   strong("CATEGORY LABEL", style = "color: #428BCA"),
+                                                   plotOutput("illustration_CL")%>% withSpinner(type=4,color="#428BCA")),
                                             column(6,
-                                                   strong("PROPER NAME", style = "color: #006c66"),
-                                                   plotOutput("illustration_PN")%>% withSpinner(type=4,color="#006c66"))
+                                                   strong("PROPER NAME", style = "color: #428BCA"),
+                                                   plotOutput("illustration_PN")%>% withSpinner(type=4,color="#428BCA"))
                                             )
                                       )
                                       )
@@ -138,11 +155,11 @@ ui = navbarPage(id = 'wholePage',
                   tags$style(
                     HTML('
             #about {background-color: #DEDEDE;}
-            .navbar {background-color: #006c66 !important;}
-            .navbar-default .navbar-brand{background-color: #006c66; color: white;}
+            .navbar {background-color: #428BCA !important;}
+            .navbar-default .navbar-brand{background-color: #428BCA; color: white;}
             .navbar-default .navbar-nav > .active > a, 
             .navbar-default .navbar-nav > .active > a:focus,
-            .navbar-default .navbar-nav > .active > a:hover {background-color: #338A84;}
+            .navbar-default .navbar-nav > .active > a:hover {background-color: #00548D;}
             
             .navbar-header { width:100% }
             .navbar-nav > li > a, 
@@ -160,10 +177,10 @@ ui = navbarPage(id = 'wholePage',
                         }
              
             .overview .box.box-solid.box-warning>.box-header {color:#000000; background:#ffff;}
-            .overview .box.box-solid{background: #ffffff; border-bottom-color:#006c66; border-left-color:#006c66; border-right-color:#006c66; border-top-color:#006c66;}
+            .overview .box.box-solid{background: #ffffff; border-bottom-color:#428BCA; border-left-color:#428BCA; border-right-color:#428BCA; border-top-color:#428BCA;}
             
             .explore .box.box-solid.box-warning>.box-header {color:#000000; background:#ffff;}
-            .explore .box.box-solid{background: #ffffff; border-bottom-color:#006c66; border-left-color:#006c66; border-right-color:#006c66; border-top-color:#006c66;}
+            .explore .box.box-solid{background: #ffffff; border-bottom-color:#428BCA; border-left-color:#428BCA; border-right-color:#428BCA; border-top-color:#428BCA;}
             
             .exploreSearch .box.box-solid{background: #ffffff !important; border-bottom-color:#ffffff !important; border-left-color:#ffffff !important; border-right-color:#ffffff !important; border-top-color:#ffffff !important;}
             
@@ -172,7 +189,7 @@ ui = navbarPage(id = 'wholePage',
             .fa, .fas {color: black;}
             
             /*notification/
-            .shiny-notification-error {background-color:#006c66; color: #ffffff} 
+            .shiny-notification-error {background-color:#428BCA; color: #ffffff} 
             
                  ')))
                 
