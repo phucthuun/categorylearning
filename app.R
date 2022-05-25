@@ -120,8 +120,8 @@ ui = navbarPage(id = 'wholePage',
                                                                         to_max = NULL, force_edges = FALSE, width = NULL, pre = NULL,
                                                                         post = NULL, dragRange = TRUE),
                                             sliderTextInput("concept_id","Select category" , 
-                                                            choices = unique(df$Concept), 
-                                                            # selected = c("January", "February", "March", "April"), #if you want any default values 
+                                                            # choices = unique(df$Concept),
+                                                            choices = letters[1:10],
                                                             animate = FALSE, grid = FALSE, 
                                                             hide_min_max = FALSE, from_fixed = FALSE,
                                                             to_fixed = FALSE, from_min = NULL, from_max = NULL, to_min = NULL,
@@ -143,7 +143,9 @@ ui = navbarPage(id = 'wholePage',
                                                    strong("PROPER NAME", style = "color: #428BCA"),
                                                    plotOutput("illustration_PN")%>% withSpinner(type=4,color="#428BCA"))
                                             )
-                                      )
+                                      ),
+                                      
+                                      includeHTML(("end_text.html"))
                                       )
                                     )
                                   ),
@@ -151,6 +153,17 @@ ui = navbarPage(id = 'wholePage',
                            column(1)
                            )
                          ),
+                # ## LIT ----
+                # tabPanel('LITERATURE', id='literature',
+                #          # WHAT
+                #          fluidRow(
+                #            column(3),
+                #            column(6, align="center", 
+                #                   includeHTML(("lit_text.html")),
+                #                   includeHTML(("end_text.html"))
+                #            ),
+                #            column(3)
+                #          )),
                   tags$head(
                   tags$style(
                     HTML('
@@ -208,7 +221,7 @@ server <- function(input, output, session) {
   input.model_id <- reactive({input$model_id})
 
   # concept_id input
-  input.concept_id <- reactive({input$concept_id})
+  input.concept_id <- reactive({return(which(letters==input$concept_id))})
   
   # Make binary df
   df.new.plot <- reactive({ 
