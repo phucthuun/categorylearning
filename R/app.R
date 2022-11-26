@@ -2,7 +2,7 @@ rm(list = ls())
 
 {
   require(shinydashboard)
-  
+
   library(shiny)
   library(shinyjs)
   library(DT)
@@ -12,17 +12,17 @@ rm(list = ls())
   library(bslib)
   library(shinycssloaders)
   library(shinyWidgets)
-  
+
   library(dplyr)
   library(tidyverse)
   library(tidyr)
   library(reshape2)
   library(readxl)
-  
+
   library(ggraph)
   library(plotly)
-  
-  
+
+
   library(ggplot2)
   library(lemon)
   library(ggpubr)
@@ -40,7 +40,7 @@ rm(list = ls())
 }
 
 { # retrieve data
-  
+
   df <- read.csv("sharingbystimlevelSHINY.csv") %>%
     mutate(
       Pattern = case_when(
@@ -49,24 +49,24 @@ rm(list = ls())
       ),
       AreaAbs = factor(AreaAbs, levels = c("V1", "TO", "AT", "PF[L]", "PM[L]", "M1[L]", "A1", "AB", "PB", "PF[i]", "PM[i]", "M1[i]")),
       Instanceposition = case_when(as.numeric(substr(Pattern, 2, 3))<=3~as.numeric(substr(Pattern, 2, 3)),
-                                   (as.numeric(substr(Pattern, 2, 3))>3)&(as.numeric(substr(Pattern, 2, 3))%%3==0)~3,
-                                   (as.numeric(substr(Pattern, 2, 3))>3)&(as.numeric(substr(Pattern, 2, 3))%%3!=0)~as.numeric(substr(Pattern, 2, 3))%%3),
+                                    (as.numeric(substr(Pattern, 2, 3))>3)&(as.numeric(substr(Pattern, 2, 3))%%3==0)~3,
+                                    (as.numeric(substr(Pattern, 2, 3))>3)&(as.numeric(substr(Pattern, 2, 3))%%3!=0)~as.numeric(substr(Pattern, 2, 3))%%3),
       Pattern.new = paste0(letters[Concept], Instanceposition)
     ) %>%
     mutate(Pattern = case_when(
       Pattern == "shared" ~ Pattern,
       Pattern != "shared" ~ Pattern.new
     ))
-  
+
   a <- t(array(1:625, dim = c(25, 25))) %>% as.data.frame()
   names(a) <- c(1:25)
   a <- a %>%
     rownames_to_column(var = "y")
   b <- melt(a, id.vars = "y", variable.name = "x", value.name = "CAcell") %>%
     mutate(x = as.numeric(x), y = as.numeric(y))
-  
+
   df <- left_join(df, b, by = "CAcell")
-  
+
   rm(a, b)
 }
 
@@ -76,7 +76,7 @@ ui <- tagList(
     class = "play",
     style = "color: #000000;"
   ),
-  
+
   ## style ----
   tags$head(
     tags$style(
@@ -126,39 +126,39 @@ ui <- tagList(
     title = "PHUC NGUYEN",
     theme = shinytheme("cosmo"),
     position = "fixed-top", footer = tags$div(class = "footer", includeHTML("end_text.html")),
-    
-    
-    
+
+
+
     ## ABOUT ----
     tabPanel("ABOUT",
-             id = "about",
-             # WHAT
-             fluidRow(
-               column(2),
-               column(8,
-                      align = "center",
-                      includeHTML(("intro_text.html"))
-               ),
-               column(2)
-             )
+      id = "about",
+      # WHAT
+      fluidRow(
+        column(2),
+        column(8,
+          align = "center",
+          includeHTML(("intro_text.html"))
+        ),
+        column(2)
+      )
     ),
-    
+
     ## ABOUT ----
     tabPanel("METHOD",
-             id = "method",
-             # WHAT
-             fluidRow(
-               column(2),
-               column(8,
-                      align = "center",
-                      includeHTML(("method_text.html"))
-               ),
-               column(2)
-             )
+      id = "method",
+      # WHAT
+      fluidRow(
+        column(2),
+        column(8,
+          align = "center",
+          includeHTML(("method_text.html"))
+        ),
+        column(2)
+      )
     ),
-    
-    
-    
+
+
+
     ## EXPLORE ----
     tabPanel(
       "EXPLORE",
@@ -180,29 +180,29 @@ ui <- tagList(
                     title = NULL, solidHeader = TRUE, status = "warning", width = NULL,
                     includeHTML(("explore_text.html")),
                     sliderTextInput("model_id", "Select model",
-                                    choices = unique(df$Model),
-                                    animate = T, grid = FALSE,
-                                    hide_min_max = FALSE, from_fixed = FALSE,
-                                    to_fixed = FALSE, from_min = NULL, from_max = NULL, to_min = NULL,
-                                    to_max = NULL, force_edges = FALSE, width = NULL, pre = NULL,
-                                    post = NULL, dragRange = TRUE
+                      choices = unique(df$Model),
+                      animate = T, grid = FALSE,
+                      hide_min_max = FALSE, from_fixed = FALSE,
+                      to_fixed = FALSE, from_min = NULL, from_max = NULL, to_min = NULL,
+                      to_max = NULL, force_edges = FALSE, width = NULL, pre = NULL,
+                      post = NULL, dragRange = TRUE
                     ),
                     sliderTextInput("concept_id", "Select category",
-                                    # choices = unique(df$Concept),
-                                    choices = letters[1:10],
-                                    animate = T, grid = FALSE,
-                                    hide_min_max = FALSE, from_fixed = FALSE,
-                                    to_fixed = FALSE, from_min = NULL, from_max = NULL, to_min = NULL,
-                                    to_max = NULL, force_edges = FALSE, width = NULL, pre = NULL,
-                                    post = NULL, dragRange = TRUE
+                      # choices = unique(df$Concept),
+                      choices = letters[1:10],
+                      animate = T, grid = FALSE,
+                      hide_min_max = FALSE, from_fixed = FALSE,
+                      to_fixed = FALSE, from_min = NULL, from_max = NULL, to_min = NULL,
+                      to_max = NULL, force_edges = FALSE, width = NULL, pre = NULL,
+                      post = NULL, dragRange = TRUE
                     ),
                     # selectizeInput("concept_id", "Select category", choices = unique(df$Concept), multiple = F)
                   )
                 ),
                 column(1)
               ),
-              
-              
+
+
               ### Plot CL ====
               fluidRow(
                 box(
@@ -227,16 +227,16 @@ ui <- tagList(
     ),
     ## LIT ----
     tabPanel("LITERATURE",
-             id = "literature",
-             # WHAT
-             fluidRow(
-               column(2),
-               column(8,
-                      align = "center",
-                      includeHTML(("lit_text.html"))
-               ),
-               column(2)
-             )
+      id = "literature",
+      # WHAT
+      fluidRow(
+        column(2),
+        column(8,
+          align = "center",
+          includeHTML(("lit_text.html"))
+        ),
+        column(2)
+      )
     ),
   )
 )
@@ -244,34 +244,34 @@ ui <- tagList(
 
 # server ----
 server <- function(input, output, session) {
-  
+
   # Preprocess outputs----
   # Make reactive to store filter criteria
-  
+
   # model_id input
   input.model_id <- reactive({
     input$model_id
   })
-  
+
   # concept_id input
   input.concept_id <- reactive({
     return(which(letters == input$concept_id))
   })
-  
+
   # Make binary df
   df.new.plot <- reactive({
     df %>% filter(Model == input.model_id() & Concept == input.concept_id())
   })
-  
-  
-  
-  
+
+
+
+
   ## PN ----
   ### Display output
-  
+
   # Plot
   output$illustration_PN <- renderPlot({
-    
+
     # CL
     pB <- ggplot(df.new.plot() %>% filter(Type == "Proper Name")) +
       geom_point(aes(x = x, y = y, color = Pattern, text = Pattern), size = 2.5) +
@@ -290,7 +290,7 @@ server <- function(input, output, session) {
         strip.text.x = element_text(size = 15),
         strip.text.y = element_text(size = 15)
       )
-    
+
     gB <- ggplot_gtable(ggplot_build(pB))
     stripr <- which(grepl("strip-t", gB$layout$name))
     fills <- Palette_AreaAbs
@@ -300,16 +300,16 @@ server <- function(input, output, session) {
       gB$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- fills[k]
       k <- k + 1
     }
-    
+
     grid.draw(gB)
   })
-  
-  
-  
-  
+
+
+
+
   ## CL ----
   output$illustration_CL <- renderPlot({
-    
+
     # CL
     pA <- ggplot(df.new.plot() %>% filter(Type == "Category Label")) +
       geom_point(aes(x = x, y = y, color = Pattern, text = Pattern), size = 2.5) +
@@ -328,7 +328,7 @@ server <- function(input, output, session) {
         strip.text.x = element_text(size = 15),
         strip.text.y = element_text(size = 15)
       )
-    
+
     gA <- ggplot_gtable(ggplot_build(pA))
     stripr <- which(grepl("strip-t", gA$layout$name))
     fills <- Palette_AreaAbs
@@ -338,7 +338,7 @@ server <- function(input, output, session) {
       gA$grobs[[i]]$grobs[[1]]$children[[j]]$gp$fill <- fills[k]
       k <- k + 1
     }
-    
+
     grid.draw(gA)
   })
 }
