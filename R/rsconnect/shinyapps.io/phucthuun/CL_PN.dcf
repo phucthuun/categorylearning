@@ -1,0 +1,13 @@
+name: CL_PN
+title: CL_PN
+username:
+account: phucthuun
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6358670
+bundleId: 5942995
+url: https://phucthuun.shinyapps.io/CL_PN/
+when: 1653475195.74185
+lastSyncTime: 1653475195.74185
+asMultiple: FALSE
+asStatic: FALSE
