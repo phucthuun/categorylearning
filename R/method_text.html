@@ -1,0 +1,31 @@
+<html>
+  <br></br><br></br>
+  <body>
+    <font size="+1"><h3 style="text-align: center;">METHOD</h3>
+    <h2 style="text-align: center;">&nbsp;<strong>Simulate concept learning with neurocomputational models</strong></h2>
+    <br>
+    
+    <p style="text-align: justify; font-size: 18px; padding: 0px 00 40px 0px;margin-left:20%; margin-right:20%">The current work applied neurocomputation to evaluate neuronal differences in the conceptual representations of objects when they were paired with proper names and category labels. The goal was to unfold the differential neural and cognitive basis of proper names and category labels during semantic learning and concept formation. Additionally, the current work assessed the generalization performance of this deep neural network model by comparing the extent to which novel instances could activate the neural network in the same manner as the training instances of their category did. We used the brain-constrained deep neural network model with spiking neurons and twelve areas in the left-hemispheric language-dominant fronto-temporo-occipital regions described in previous studies by <a href="https://www.frontiersin.org/article/10.3389/fncom.2018.00088" style="font-style: italic; color: black">Tomasello et al. (2018)</a> and <a href="https://doi.org/10.1007/s00426-021-01591-6" style="font-style: italic; color: black">Henningsen-Schomers & Pulvermüller (2021)</a>.</p>
+
+    
+    
+    <h3 style="text-align: center;">&nbsp;<strong>Neuroanatomically and neurophysiologically inspired network models</strong></h3>
+    <p style="text-align: left;">The architecture modelled three areas representing the ventral visual system (i.e., primary visual cortex <i>*V1</i>, temporo-occipital area <i>*TO</i>, anterior-temporal area <i>*AT</i>) and three areas representing the dorsolateral action system (i.e. , dorsolateral fronto-central motor <i>*M1L</i>, premotor cortex <i>*PML</i>, prefrontal cortex <i>*PFL</i>). These formed the extrasylvian region for sensorimotor processing where semantic information was stored. Another 6 areas of the perisylvian region for word-form processing which housed articulatory-phonological and acoustic-phonological information. These areas involved the three auditory areas (i.e., primary auditory cortex <i>*A1</i>, auditory belt <i>*AB</i>, parabelt areas <i>*PB</i>) and three articulatory areas (i.e., inferior primary motor cortex <i>*M1i</i>, inferior premotor cortex <i>*PMi</i>, multimodal prefrontal motor cortex <i>*PFi</i>), respectively. Between-area connections were established in a way that prefer adjacent neighbors although linkages to next-neighbor areas were also available. In this structure, long-distance corticocortical links were replicated according to neuroanatomical evidence in the literature.</p>
+    <p class="aligncenter" style="padding: 0px 0em 10px 0;"><img src="426_2021_1591_Fig2_HTML.png" width="726" alt="centered image"></p>
+    <p style="text-align: center;"><strong>Figure.</strong> Anatomical and connectivity architecture of the deep neural network model. Image taken from <a href="https://link.springer.com/article/10.1007/s00426-021-01591-6/figures/2" style="font-style: italic; color: black">Henningsen-Schomers & Pulvermüller (2021)</a>.</p>
+    <br></br>
+    
+    
+    
+    
+    
+    <h3 style="text-align: center;">&nbsp;<strong>Procedure and design</strong></h3>
+    <p style="text-align: left;"><strong>Training phase.</strong> The neural network model was trained on ten categories, each containing three training instances. The training instances of the same category were labelled either by the same category label, by their distinct proper names or they were not labelled at all. Grounding patterns of each instance were presented to extrasylvian primary areas (to mimic visuo-motoric percepts) and perisylvian areas (to mimic linguistic labels embedded in auditory/articulatory signals). </p>
+    <p style="text-align: left;"><strong>Test phase. </strong>For each of the ten categories we presented to the neural network three training instances together with three novel instances. Training and test instances were presented to the neural network separately and after one another in a predetermined order. Importantly, we only stimulated the extrasylvian primary areas <i>*V1</i> and <i>*M1L</i>. The absence of labels in the test trial allowed us to evaluate how different labels would influence the deep neural network’s concept learning. This could be reflected in different activation patterns in the multimodal areas during the test phase. </p>
+    <p style="text-align: left;"><u>Note</u>: the test order in the current study was not relevant because we had reset the global network (i.e., all excitatory and inhibitory cells displayed a membrane potential of zero) each time before the grounding pattern was inputted to the neural network model.</p>
+    <p class="aligncenter" style="padding: 0px 0em 10px 0;"><img src="Design.png" width="726" alt="centered image"></p>
+    <p style="text-align: center;"><strong>Figure.</strong> (A) TRAINING: The neural network model was trained on 10 categories, each containing 3 training instances. The training instances of the same category were labelled either by the same category label or by their distinct proper names. (B) TEST: For each of the 10 categories we presented to the neural network 3 training instances together with 3 novel instances.</p>
+    
+    </font>
+    </body>
+    </html>
