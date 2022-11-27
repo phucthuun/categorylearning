@@ -5,9 +5,9 @@ account: phucthuun
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6358670
-bundleId: 6558346
+bundleId: 6558377
 url: https://phucthuun.shinyapps.io/CL_PN/
-when: 1669515530.92624
-lastSyncTime: 1669515530.92624
+when: 1669517014.73852
+lastSyncTime: 1669517014.73852
 asMultiple: FALSE
 asStatic: FALSE
