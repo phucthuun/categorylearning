@@ -4,10 +4,10 @@
 The shiny app is an interactive version of my master thesis
 <br>
 [Link](https://phucthuun.shinyapps.io/CL_PN/)
-to deployed app
+to the deployed app
 
-This version has simple layout, can be explored by downloading the zip folder from github, not on shinyapps.io
+This version on GitHub is a simplified version; You are welcome to explore the app by downloading the zip folder from github and run the file app.R.
 
 
 ----
-App developer: [Phuc Thu Uyen Nguyen](https://github.com/phucthuun)
+Developer: [Phuc Thu Uyen Nguyen](https://github.com/phucthuun)
