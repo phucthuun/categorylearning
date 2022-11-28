@@ -1,6 +1,6 @@
-# Master Thesis
-#### PROPER NAME VS. CATEGORY LABELS
-#### and their influence on conceptual representations 
+### Master Thesis
+## PROPER NAME VS. CATEGORY LABELS
+## and their influence on conceptual representations 
 
 The shiny app is an interactive version of my master thesis
 <br>
