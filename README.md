@@ -6,8 +6,8 @@ The shiny app is an interactive version of my master thesis
 [Link](https://phucthuun.shinyapps.io/CL_PN/)
 to the deployed app
 
-![CA_reduced](https://user-images.githubusercontent.com/99726189/204254008-d03f6acb-6415-43c3-9120-5f59d65cbcfb.gif)
 
+![me](https://github.com/phucthuun/categorylearning/blob/main/R/www/CA_reduced.gif)
 
 This version on GitHub is a simplified version; You are welcome to explore the app by downloading the zip folder from github and run the file app.R.
 
