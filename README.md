@@ -1,4 +1,4 @@
-### Master Thesis
+
 ## PROPER NAME VS. CATEGORY LABELS and their influence on conceptual representations 
 
 
